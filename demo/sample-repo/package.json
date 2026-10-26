@@ -1,0 +1,14 @@
+{
+  "name": "taskflow-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Synthetic repository used by the CommitPilot AI demo",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

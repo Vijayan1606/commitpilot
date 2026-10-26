@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-10-26",
+  "notes": "Every exception must name a package, a reason, a mitigation, and an expiry date. The audit script fails on any unlisted high/critical advisory and on expired exceptions.",
+  "exceptions": [
+    {
+      "package": "zod",
+      "severity": "high",
+      "advisory": "GHSA-mrhx-c7xc-m3w5",
+      "reason": "Fix requires Zod 4, a breaking change across every schema and the MCP SDK integration. The advisory concerns memory exhaustion while validating oversized constrained collections.",
+      "mitigation": "Every request body is capped at 200 KB (API) or 1 MB (MCP express.json). Array and string lengths are explicitly bounded in each schema. Tool output is capped at 2 MB. Revisit when upgrading to Zod 4.",
+      "expires": "2027-01-31"
+    },
+    {
+      "package": "tailwindcss",
+      "severity": "moderate",
+      "advisory": "transitive:postcss-selector-parser",
+      "reason": "Tailwind 3 is a build-time dependency only. The advisory is a CPU-exhaustion issue in selector parsing, not an input path in this application.",
+      "mitigation": "No user or repository content reaches Tailwind. Tailwind 4 is a separate migration.",
+      "expires": "2027-01-31"
+    },
+    {
+      "package": "postcss-nested",
+      "severity": "moderate",
+      "advisory": "transitive:postcss-selector-parser",
+      "reason": "Build-time CSS processing only; no runtime exposure.",
+      "mitigation": "Removed when Tailwind is upgraded.",
+      "expires": "2027-01-31"
+    },
+    {
+      "package": "postcss-selector-parser",
+      "severity": "moderate",
+      "advisory": "GHSA-rj75-hqrm-r3gf",
+      "reason": "Quadratic complexity parsing flat selectors. Only build-time CSS is parsed.",
+      "mitigation": "No untrusted CSS is processed. Tracked for the Tailwind 4 migration.",
+      "expires": "2027-01-31"
+    }
+  ]
+}
